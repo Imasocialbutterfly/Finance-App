@@ -8,6 +8,20 @@
       "when": 1717601763887,
       "tag": "0000_modern_silver_centurion",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1718274775080,
+      "tag": "0001_chunky_franklin_storm",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1718280566165,
+      "tag": "0002_majestic_the_stranger",
+      "breakpoints": true
     }
   ]
 }
