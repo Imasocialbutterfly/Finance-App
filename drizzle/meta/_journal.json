@@ -22,6 +22,13 @@
       "when": 1718280566165,
       "tag": "0002_majestic_the_stranger",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1718804329353,
+      "tag": "0003_sloppy_quicksilver",
+      "breakpoints": true
     }
   ]
 }
