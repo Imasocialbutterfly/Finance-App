@@ -2,7 +2,6 @@ import { db } from "@/db/drizzle";
 import {
   accounts,
   categories,
-  insertCategorySchema,
   insertTransactionSchema,
   transactions,
 } from "@/db/schema";
@@ -136,6 +135,38 @@ const app = new Hono()
           id: createId(),
           ...values,
         })
+        .returning();
+
+      return c.json({ data });
+    }
+  )
+  .post(
+    "bulk-create",
+    clerkMiddleware(),
+    zValidator(
+      "json",
+      z.array(
+        insertTransactionSchema.omit({
+          id: true,
+        })
+      )
+    ),
+    async (c) => {
+      const auth = getAuth(c);
+      const values = c.req.valid("json");
+
+      if (!auth?.userId) {
+        return c.json({ error: "Unauthorised" }, 401);
+      }
+
+      const data = await db
+        .insert(transactions)
+        .values(
+          values.map((value) => ({
+            id: createId(),
+            ...value,
+          }))
+        )
         .returning();
 
       return c.json({ data });
